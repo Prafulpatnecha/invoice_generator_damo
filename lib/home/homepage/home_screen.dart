@@ -21,14 +21,14 @@ class _HomePageState extends State<HomePage> {
           title: const Text('Invoice Generator',style: TextStyle(color: Colors.white),),
           centerTitle: true,
         ),
-        body: Container(
+        body: SizedBox(
           child: SingleChildScrollView(
+            physics: const BouncingScrollPhysics(),
             child: Column(
               children: [
                 ...List.generate(textAllValueList.length, (index) => buildColumn(index: index),),
                 IconButton(onPressed: () {
                   setState(() {
-
                   TextEditingController txtProductName=TextEditingController();
                   TextEditingController txtProductPrice=TextEditingController();
                   TextEditingController txtProductGST=TextEditingController();
@@ -52,12 +52,12 @@ class _HomePageState extends State<HomePage> {
                 }
             });
           },
-          child: Icon(Icons.sensor_door_outlined),
+          child: const Icon(Icons.sensor_door_outlined),
         ),
       ),
     );
   }
-  Column buildColumn({required int index}) {
+  Widget buildColumn({required int index}) {
     return Column(
               children: [
                 const SizedBox(height: 20,),
@@ -114,7 +114,7 @@ class _HomePageState extends State<HomePage> {
                     textAllValueList.removeAt(index);
                   });
                 }, icon: const Icon(Icons.highlight_remove_outlined,color: Colors.blue,),),
-                Divider()
+                const Divider()
               ],
             );
   }
