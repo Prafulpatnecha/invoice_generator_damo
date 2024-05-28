@@ -33,6 +33,12 @@ class _ViewPageState extends State<ViewPage> {
           ),
         ),
       ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.of(context).pushNamed('/pdf');
+        },
+        child: Icon(Icons.done_all),
+      ),
     );
   }
 }
