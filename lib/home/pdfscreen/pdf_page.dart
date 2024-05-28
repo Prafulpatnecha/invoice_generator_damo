@@ -137,10 +137,10 @@ Future<Uint8List> pdfGentrater() {
                             play.Text(
                                 'Rs ${(double.parse(textAllValueList[index].txtProductPrice!.text)/100*double.parse(textAllValueList[index].txtProductGST!.text)+double.parse(textAllValueList[index].txtProductPrice!.text))}',
                                 style: play.TextStyle(fontSize: 20)),
+
                           ],
                         ),
                       ],
-
                     ),
                   ],
                 ),
