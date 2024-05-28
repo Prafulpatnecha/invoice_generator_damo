@@ -25,8 +25,8 @@ class _ViewPageState extends State<ViewPage> {
                 textAllValueList.length,
                 (index) => ListTile(
                   title: Text(textAllValueList[index].txtProductName!.text,style: const TextStyle(color: Colors.black,fontSize: 20),),
-                  subtitle: Text('${textAllValueList[index].txtProductGST!.text} %'),
-                  trailing: Text('Rs ${textAllValueList[index].txtProductPrice!.text}',style: const TextStyle(color: Colors.black45,fontSize: 18),),
+                  subtitle: Text('Rs ${textAllValueList[index].txtProductPrice!.text}',style: const TextStyle(color: Colors.black45,fontSize: 18),),
+                  trailing: CircleAvatar(radius: 40,backgroundImage: FileImage(textAllValueList[index].fileimage!),),
                 ),
               )
             ],

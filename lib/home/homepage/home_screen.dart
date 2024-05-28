@@ -1,4 +1,7 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 
 import '../../utils/globle_value.dart';
 import 'components/containers.dart';
@@ -31,8 +34,9 @@ class _HomePageState extends State<HomePage> {
                   setState(() {
                   TextEditingController txtProductName=TextEditingController();
                   TextEditingController txtProductPrice=TextEditingController();
+                  File? fileimage;
                   TextEditingController txtProductGST=TextEditingController();
-                  textAllValueList.add(ProductModel(txtProductGST: txtProductGST,txtProductName:txtProductName,txtProductPrice: txtProductPrice));
+                  textAllValueList.add(ProductModel(txtProductGST: txtProductGST,txtProductName:txtProductName,txtProductPrice: txtProductPrice,fileimage: fileimage));
                   });
                   // fromkey.currentState!.validate();
                 }, icon: const Icon(Icons.add_circle,color: Colors.blue,size: 40,))
@@ -44,6 +48,10 @@ class _HomePageState extends State<HomePage> {
           backgroundColor: Colors.blue.shade50,
           onPressed: () {
             setState(() {
+              // ScaffoldMessenger(child: SnackBar(content: Text('data')),);
+              // showDialog(context: context, builder: (context) {
+              //   return Text('data');
+              // },);
               if(
               fromkey.currentState!.validate() && textAllValueList.isNotEmpty
               )
@@ -61,6 +69,23 @@ class _HomePageState extends State<HomePage> {
     return Column(
               children: [
                 const SizedBox(height: 20,),
+                GestureDetector(
+                  onTap: () async {
+                      XFile? xfileimage=await imagePicker.pickImage(source: ImageSource.gallery);
+                    setState(() {
+                      textAllValueList[index].fileimage=File(xfileimage!.path);
+                    });
+                  },
+                  child: CircleAvatar(
+                    radius: 50,
+                    backgroundColor: Colors.blue,
+                    backgroundImage: (textAllValueList[index].fileimage!=null)?FileImage(textAllValueList[index].fileimage!):null,
+                    child: const Align(
+                      alignment: Alignment.bottomRight,
+                        child: Icon(Icons.image)),
+                  ),
+                ),
+                const SizedBox(height: 20,),
                 ListTile(
                   title: textFormFieldDetails(textfind: 'Fill Product Name', validatorfind: (value) {
                     if(value.toString().isEmpty)
@@ -76,7 +101,7 @@ class _HomePageState extends State<HomePage> {
                       {
                         return 'Filled will be must required';
                       }
-                    else if(value.toString().contains(RegExp(r'[-!@#$%^&* (),.?":{}|<>]')))
+                    else if(value.toString().contains(RegExp(r'[-!@#$%^&* (),?":{}|<>]')))
                     {
                         return 'Only Numbers Allow';
                     }
@@ -90,6 +115,7 @@ class _HomePageState extends State<HomePage> {
                 ListTile(
                   title: textFormFieldDetails(textfind: 'Fill Product GST',
                       validatorfind: (value) {
+
                     if(value.toString().isEmpty)
                       {
                         return 'Filled will be must required';
@@ -114,7 +140,7 @@ class _HomePageState extends State<HomePage> {
                     textAllValueList.removeAt(index);
                   });
                 }, icon: const Icon(Icons.highlight_remove_outlined,color: Colors.blue,),),
-                const Divider()
+                const Divider(),
               ],
             );
   }

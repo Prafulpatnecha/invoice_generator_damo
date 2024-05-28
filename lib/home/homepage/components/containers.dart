@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 TextFormField textFormFieldDetails({required String textfind,required FormFieldValidator validatorfind,required TextInputType keyboardTypeFind,required TextEditingController controllerFind}) {

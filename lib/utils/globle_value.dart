@@ -1,4 +1,7 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 
 GlobalKey<FormState> fromkey=GlobalKey();
 List<ProductModel> textAllValueList =[];
@@ -11,5 +14,8 @@ class ProductModel
   TextEditingController? txtProductName;
   TextEditingController? txtProductPrice;
   TextEditingController? txtProductGST;
-  ProductModel({this.txtProductName,this.txtProductGST,this.txtProductPrice});
+  File? fileimage;
+  ProductModel({this.txtProductName,this.txtProductGST,this.txtProductPrice,this.fileimage});
 }
+ImagePicker imagePicker=ImagePicker();
+File? fileimage;
