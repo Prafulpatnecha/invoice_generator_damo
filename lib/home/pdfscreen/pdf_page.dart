@@ -1,3 +1,4 @@
+import 'dart:io';
 import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
@@ -33,6 +34,11 @@ class _PdfPageState extends State<PdfPage> {
 
 Future<Uint8List> pdfGentrater() {
   final pdf = play.Document();
+  var fileimages=[];
+  for(int i=0;i<textAllValueList.length;i++)
+    {
+      fileimages.add(play.MemoryImage(textAllValueList[i].fileimage!.readAsBytesSync()));
+    }
   pdf.addPage(
     play.MultiPage(
       build: (context) => [
@@ -41,6 +47,17 @@ Future<Uint8List> pdfGentrater() {
           (index) => play.Container(
             child: play.Column(
               children: [
+                play.Row(
+                  children: [
+                play.Center(
+                  child: play.Image(fileimages[index])
+                ),
+                    play.SizedBox(width: 20),
+                    play.Text('Product Image',
+                        style: const play.TextStyle(fontSize: 20)),
+                  ],
+                ),
+                play.SizedBox(height: 60),
                 play.Table(
                   border: play.TableBorder.all(color: PdfColors.black),
                   children: [
