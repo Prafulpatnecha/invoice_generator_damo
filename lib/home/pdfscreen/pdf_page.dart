@@ -30,6 +30,7 @@ class _PdfPageState extends State<PdfPage> {
 // represents a widget that always renders the same output based on the given input and does not
 // maintain any internal state.
 
+
 Future<Uint8List> pdfGentrater() {
   final pdf = play.Document();
   pdf.addPage(
