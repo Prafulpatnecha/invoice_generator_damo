@@ -37,7 +37,7 @@ class _ViewPageState extends State<ViewPage> {
         onPressed: () {
           Navigator.of(context).pushNamed('/pdf');
         },
-        child: Icon(Icons.done_all),
+        child: const Icon(Icons.done_all),
       ),
     );
   }
