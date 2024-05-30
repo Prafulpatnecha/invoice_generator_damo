@@ -1,4 +1,3 @@
-import 'dart:io';
 import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
@@ -41,6 +40,7 @@ Future<Uint8List> pdfGentrater() {
     }
   pdf.addPage(
     play.MultiPage(
+      pageFormat: PdfPageFormat.a4,
       build: (context) => [
         ...List.generate(
           textAllValueList.length,
@@ -144,7 +144,7 @@ Future<Uint8List> pdfGentrater() {
                               width: 10,
                             ),
                             play.Text('Total Bill :',
-                                style: play.TextStyle(fontSize: 20)),
+                                style: const play.TextStyle(fontSize: 20)),
                           ],
                         ),
                         play.Row(
@@ -154,7 +154,7 @@ Future<Uint8List> pdfGentrater() {
                             ),
                             play.Text(
                                 'Rs ${(double.parse(textAllValueList[index].txtProductPrice!.text)/100*double.parse(textAllValueList[index].txtProductGST!.text)+double.parse(textAllValueList[index].txtProductPrice!.text))}',
-                                style: play.TextStyle(fontSize: 20)),
+                                style: const play.TextStyle(fontSize: 20)),
                           ],
                         ),
                       ],

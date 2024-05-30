@@ -77,7 +77,7 @@ class _HomePageState extends State<HomePage> {
                     if(textAllValueList.length!=check)
                       {
                     ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(content: Text('data')));
+                        const SnackBar(content: Text('Image Not Found')));
                       }
                   }
             });
